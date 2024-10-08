@@ -3,7 +3,7 @@ import React from 'react';
 import format from 'date-fns/format';
 
 function Clock() {
-  const [time, setTime] = React.useState(new Date());
+  const [time, setTime] = React.useState(null);
 
   React.useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -14,9 +14,12 @@ function Clock() {
       window.clearInterval(intervalId);
     };
   }, []);
+  if (time === null) {
+    return (<p>loading....</p>);
+  }
 
   return (
-    <p className="clock">{format(time, 'hh:mm:ss.S a')}</p>
+    <p className="clock">{format(time , 'hh:mm:ss.S a')}</p>
   );
 }
 
