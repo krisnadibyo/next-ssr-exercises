@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import DATA from './data';
 
 function reducer(state, action) {
   return produce(state, (draftState) => {
@@ -18,6 +19,9 @@ function reducer(state, action) {
           quantity: 1,
         });
         return;
+      }
+      case 'init-items': {
+        return action.items;
       }
 
       case 'delete-item': {
